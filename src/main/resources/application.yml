@@ -4,8 +4,10 @@ commonConfig:
 
 # tomcat 配置
 #server.address: 
-server.port: 8989
-            
+server:
+      port: 8989
+      contextPath:  /springBoot
+      displayName:  spring-boot-practice   
 # 日志配置
 logging:
         file: ${commonConfig.appName}.log

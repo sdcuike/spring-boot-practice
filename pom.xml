@@ -49,6 +49,17 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.doctor</groupId>
+            <artifactId>beaver</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -246,8 +257,27 @@
             <id>github-releases</id>
             <url>http://oss.sonatype.org/content/repositories/github-releases/</url>
         </repository>
+        <repository>
+            <id>doctorwho-maven-repo</id>
+            <url>https://raw.githubusercontent.com/sdcuike/maven-repo/master/repositories/releases</url>
+        </repository>
+        <repository>
+            <id>doctorwho-maven-repo-s</id>
+            <url>https://raw.githubusercontent.com/sdcuike/maven-repo/master/repositories/snapshots</url>
+        </repository>
     </repositories>
 
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <url>http://repo.spring.io/snapshot</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <url>http://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
     <organization>
         <url>https://github.com/sdcuike</url>
         <name>sdcuike</name>

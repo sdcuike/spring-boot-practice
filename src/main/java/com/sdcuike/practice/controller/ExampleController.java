@@ -1,5 +1,8 @@
 package com.sdcuike.practice.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -8,11 +11,14 @@ import org.slf4j.MDC;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.doctor.beaver.domain.result.ModelResult;
+import com.google.common.collect.Lists;
 import com.sdcuike.practice.config.CommonConfig;
 import com.sdcuike.practice.dao.CityRepository;
 import com.sdcuike.practice.domain.City;
 
 @RestController
+@RequestMapping("example")
 public class ExampleController {
     private final Logger   log = LoggerFactory.getLogger(getClass());
 
@@ -23,20 +29,28 @@ public class ExampleController {
     private CityRepository cityRepository;
 
     @RequestMapping("/")
-    public String home() {
-        return "hello world spring boot";
+    public ModelResult<String> home() {
+        ModelResult<String> modelResult = new ModelResult<>();
+        modelResult.setData("hello world spring boot");
+        return modelResult;
     }
 
     @RequestMapping("/testConfig")
-    public String testConfig() {
-        return commonConfig.getAppName();
+    public ModelResult<String> testConfig() {
+        ModelResult<String> modelResult = new ModelResult<>();
+        modelResult.setData(commonConfig.getAppName());
+        return modelResult;
     }
 
     @RequestMapping("/db")
-    public Iterable<City> testJPA() {
+    public ModelResult<List<City>> testJPA() {
+        ModelResult<List<City>> modelResult = new ModelResult<>();
         MDC.put("WHO", "WHO");
         log.info("testJPA");
         cityRepository.save(new City("name", "city"));
-        return cityRepository.findAll();
+        Iterable<City> iterable = cityRepository.findAll();
+        ArrayList<City> list = Lists.newArrayList(iterable);
+        modelResult.setData(list);
+        return modelResult;
     }
 }
