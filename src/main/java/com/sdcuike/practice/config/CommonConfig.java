@@ -7,11 +7,13 @@ import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Component
 @ConfigurationProperties(prefix = "commonConfig")
 @Getter
 @Setter
+@ToString
 public class CommonConfig {
 
     @NotNull
