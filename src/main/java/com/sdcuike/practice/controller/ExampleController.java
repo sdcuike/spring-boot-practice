@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,6 +41,20 @@ public class ExampleController {
         ModelResult<String> modelResult = new ModelResult<>();
         modelResult.setData(commonConfig.getAppName());
         return modelResult;
+    }
+
+    @RequestMapping("/testConfigN")
+    public ModelResult<String> testConfig_(@RequestHeader("headerN") String headerN) {
+        ModelResult<String> modelResult = new ModelResult<>();
+        modelResult.setData(commonConfig.getAppName());
+        return modelResult;
+    }
+
+    @RequestMapping("/testConfigE")
+    public ModelResult<String> testConfig_E() {
+        ModelResult<String> modelResult = new ModelResult<>();
+        modelResult.setData(commonConfig.getAppName());
+        throw new RuntimeException("test e");
     }
 
     @RequestMapping("/db")
