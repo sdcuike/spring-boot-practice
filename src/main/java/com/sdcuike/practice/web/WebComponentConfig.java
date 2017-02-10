@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Configuration;
  *         <p>
  *         Created on 2017-02-09
  *         <p>
- *         web组件如Filter等注解配置，支持依赖注入
+ *         web组件如Filter等注解配置，支持依赖注入，但spring的@Order注解不支持排序;
+ * @WebFilter has no element to define the order of filter of execution.
  */
 @Configuration
 @ServletComponentScan

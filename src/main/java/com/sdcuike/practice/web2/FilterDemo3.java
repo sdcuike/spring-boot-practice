@@ -1,4 +1,4 @@
-package com.sdcuike.practice.web;
+package com.sdcuike.practice.web2;
 
 import java.io.IOException;
 
@@ -9,26 +9,13 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.annotation.Order;
 
 import com.sdcuike.practice.config.CommonConfig;
 
-/**
- * FilterDemo1
- * 
- * @author sdcuike
- *         <p>
- *         Created on 2017-02-10
- *         <p>
- *         支持依赖注入
- */
-@WebFilter("/*")
-@Order(Integer.MAX_VALUE)
-public class FilterDemo1 implements Filter {
+public class FilterDemo3 implements Filter {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Resource
