@@ -6,6 +6,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.core.Ordered;
+
 /**
  * spring HandlerInterceptor扩展
  * 
@@ -25,5 +27,5 @@ public @interface SpringHandlerInterceptor {
 
     String[] excludePatterns() default {};
 
-    int order() default 0;
+    int order() default Ordered.LOWEST_PRECEDENCE;
 }
