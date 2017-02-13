@@ -3,6 +3,8 @@ package com.sdcuike.practice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.sdcuike.spring.extend.web.EmbeddedWebApplicationContextExtend;
+
 /**
  * @author sdcuike
  *         <p>
@@ -15,6 +17,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication springApplication = new SpringApplication(Application.class);
+        springApplication.setApplicationContextClass(EmbeddedWebApplicationContextExtend.class);
+        springApplication.run(args);
     }
 }
