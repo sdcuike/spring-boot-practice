@@ -21,3 +21,8 @@ Spring Boot Practice
 
 ### debug模式
  java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n -jar target/myproject-0.0.1-SNAPSHOT.jar
+ 
+ 
+### 应用自动重启
+      更改代码后， IDE自动编译，classpath的字节码文件变化，spring boot会自动重启，如果IDE不管用，请mvn compile 手动编译.
+           
