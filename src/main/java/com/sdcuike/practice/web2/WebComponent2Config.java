@@ -6,6 +6,8 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.sdcuike.spring.extend.web.MvcConfigurerAdapter;
+
 /**
  * web 组件配置
  * 
@@ -16,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
  *         自定义注入，并支持依赖注入，组件排序
  */
 @Configuration
-public class WebComponent2Config {
+public class WebComponent2Config extends MvcConfigurerAdapter {
 
     @Bean
     public FilterRegistrationBean filterDemo3Registration() {
@@ -49,4 +51,5 @@ public class WebComponent2Config {
     public Filter filterDemo4() {
         return new FilterDemo4();
     }
+
 }
