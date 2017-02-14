@@ -27,4 +27,11 @@ Spring Boot Practice
       更改代码后， IDE自动编译，classpath的字节码文件变化，spring boot会自动重启，如果IDE不管用，请mvn compile 手动编译.
            
 ## 文档
+### 生成
+
+mvn test -Dspring.profiles.active=doc
+
+## 访问
 [http://localhost:8989/springBoot/swagger-ui.html](http://localhost:8989/springBoot/swagger-ui.html)
+
+[http://localhost:8989/springBoot/v2/api-docs](http://localhost:8989/springBoot/v2/api-docs)

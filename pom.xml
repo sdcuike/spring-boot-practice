@@ -24,6 +24,7 @@
         <lombok.version>1.16.12</lombok.version>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
         <asciidoctor-plugin.version>1.5.3</asciidoctor-plugin.version>
+        <springfox.version>2.6.1</springfox.version>
 
         <clean-plugin.version>3.0.0</clean-plugin.version>
         <compiler-plugin.version>3.5.1</compiler-plugin.version>
@@ -106,12 +107,18 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.6.1</version>
+            <version>${springfox.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.6.1</version>
+            <version>${springfox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-staticdocs</artifactId>
+            <version>${springfox.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- test -->
@@ -212,28 +219,34 @@
                 <version>${jar-plugin.version}</version>
             </plugin>
 
+            <!-- Static API documentation with Swagger2Markup -->
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>${asciidoctor-plugin.version}</version>
+                <version>1.5.2</version>
                 <executions>
                     <execution>
-                        <id>generate-docs</id>
-                        <phase>package</phase>
+                        <id>output-html</id>
+                        <phase>test</phase>
                         <goals>
                             <goal>process-asciidoc</goal>
                         </goals>
                         <configuration>
-                            <backend>html</backend>
-                            <doctype>book</doctype>
-                            <attributes>
-                                <snippets>${snippetsDirectory}</snippets>
-                            </attributes>
-                            <sourceDirectory>src/docs/asciidocs</sourceDirectory>
-                            <outputDirectory>target/generated-docs</outputDirectory>
+                            <backend>html5</backend>
+                            <outputDirectory>${basedir}/src/main/static/</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <sourceDirectory>${basedir}/src/test/resources</sourceDirectory>
+                    <sourceDocumentName>index.adoc</sourceDocumentName>
+                    <attributes>
+                        <doctype>book</doctype>
+                        <toc>left</toc>
+                        <toclevels>2</toclevels>
+                        <generated>${project.build.directory}/docs/asciidoc/generated</generated>
+                    </attributes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
