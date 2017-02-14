@@ -6,13 +6,11 @@ import static springfox.documentation.schema.AlternateTypeRules.newRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.async.DeferredResult;
 
 import com.fasterxml.classmate.TypeResolver;
-import com.google.common.collect.Sets;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -43,8 +41,6 @@ public class SpringfoxConfig {
                 .paths(PathSelectors.any())
                 .build()
                 .pathMapping("/")
-                .produces(Sets.newHashSet(MediaType.APPLICATION_JSON_VALUE))
-                .consumes(Sets.newHashSet(MediaType.APPLICATION_JSON_VALUE))
                 .genericModelSubstitutes(ResponseEntity.class)
                 .alternateTypeRules(
                         newRule(typeResolver.resolve(DeferredResult.class,
