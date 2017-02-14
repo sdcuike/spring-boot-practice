@@ -22,6 +22,8 @@
 
         <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
         <lombok.version>1.16.12</lombok.version>
+        <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
+        <asciidoctor-plugin.version>1.5.3</asciidoctor-plugin.version>
 
         <clean-plugin.version>3.0.0</clean-plugin.version>
         <compiler-plugin.version>3.5.1</compiler-plugin.version>
@@ -99,6 +101,17 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.6.1</version>
         </dependency>
 
         <!-- test -->
@@ -198,6 +211,30 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${jar-plugin.version}</version>
             </plugin>
+
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>${asciidoctor-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-docs</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <backend>html</backend>
+                            <doctype>book</doctype>
+                            <attributes>
+                                <snippets>${snippetsDirectory}</snippets>
+                            </attributes>
+                            <sourceDirectory>src/docs/asciidocs</sourceDirectory>
+                            <outputDirectory>target/generated-docs</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -256,6 +293,12 @@
         <repository>
             <id>github-releases</id>
             <url>http://oss.sonatype.org/content/repositories/github-releases/</url>
+        </repository>
+
+        <repository>
+            <id>jcenter-snapshots</id>
+            <name>jcenter</name>
+            <url>https://jcenter.bintray.com/</url>
         </repository>
         <repository>
             <id>doctorwho-maven-repo</id>
