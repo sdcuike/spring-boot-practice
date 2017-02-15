@@ -2,6 +2,7 @@ package com.sdcuike.practice.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -68,6 +70,16 @@ public class ExampleController {
         MDC.put("WHO", "WHO");
         log.info("testJPA");
         cityRepository.save(new City("name", "city"));
+        Iterable<City> iterable = cityRepository.findAll();
+        ArrayList<City> list = Lists.newArrayList(iterable);
+        modelResult.setData(list);
+        return modelResult;
+    }
+
+    @RequestMapping("/test-request-decrypt-response-encrypt")
+    public ModelResult<List<City>> testRequestDecryptResponseEncryptBody(@RequestBody Map<String, String> map) {
+        ModelResult<List<City>> modelResult = new ModelResult<>();
+        cityRepository.save(new City(map.get("name"), map.get("city")));
         Iterable<City> iterable = cityRepository.findAll();
         ArrayList<City> list = Lists.newArrayList(iterable);
         modelResult.setData(list);
