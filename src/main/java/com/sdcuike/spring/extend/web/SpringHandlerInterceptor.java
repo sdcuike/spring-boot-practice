@@ -7,6 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.springframework.core.Ordered;
+import org.springframework.stereotype.Component;
 
 /**
  * spring HandlerInterceptor扩展
@@ -20,6 +21,7 @@ import org.springframework.core.Ordered;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@Component
 public @interface SpringHandlerInterceptor {
     String[] value() default {};
 
