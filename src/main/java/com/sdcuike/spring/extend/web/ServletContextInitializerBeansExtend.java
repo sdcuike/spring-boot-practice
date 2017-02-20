@@ -5,8 +5,8 @@ import javax.servlet.Filter;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
-import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.core.annotation.Order;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.OrderUtils;
 
 /**
  * @author sdcuike
@@ -22,10 +22,14 @@ public class ServletContextInitializerBeansExtend extends ServletContextInitiali
 
     @Override
     protected void addServletContextInitializerBean(Class<?> type, String beanName, ServletContextInitializer initializer, ListableBeanFactory beanFactory, Object source) {
-        Order order = AnnotationUtils.findAnnotation(source.getClass(), Order.class);
+        Integer order = OrderUtils.getOrder(source.getClass());
+        if (order == null && source instanceof Ordered) {
+            order = ((Ordered) source).getOrder();
+        }
+
         if (Filter.class == type && order != null) {
             FilterRegistrationBean filterRegistrationBean = (FilterRegistrationBean) initializer;
-            filterRegistrationBean.setOrder(order.value());
+            filterRegistrationBean.setOrder(order);
         }
 
         super.addServletContextInitializerBean(type, beanName, initializer, beanFactory, source);
