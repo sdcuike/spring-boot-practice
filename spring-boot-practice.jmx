@@ -317,6 +317,37 @@ try {
 </stringProp>
       </BeanShellPostProcessor>
       <hashTree/>
+      <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor-PrettyFromatJson " enabled="true">
+        <stringProp name="filename"></stringProp>
+        <stringProp name="parameters"></stringProp>
+        <boolProp name="resetInterpreter">false</boolProp>
+        <stringProp name="script">import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+     
+     
+try {
+	
+        String response_data = prev.getResponseDataAsString();
+        
+        log.info(&quot;response_data: &quot; + response_data);
+        ObjectMapper objectMapper = new ObjectMapper();
+		
+        Map readValue = objectMapper.readValue(response_data, Map.class);
+        String writeValueAsString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(readValue);
+        log.info(&quot;PrettyFromatJson result: &quot; + writeValueAsString);
+        
+        prev.setResponseData(writeValueAsString);
+
+        
+        
+} catch (JsonProcessingException e) {
+           
+       log.info(&quot;BeanShell PostProcessor-解密数据 failed============== =========================&quot;, ex);
+       
+}
+ </stringProp>
+      </BeanShellPostProcessor>
+      <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group-ExampleController" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
