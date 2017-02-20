@@ -3,13 +3,17 @@ package com.sdcuike.practice.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
 
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -84,5 +88,32 @@ public class ExampleController {
         ArrayList<City> list = Lists.newArrayList(iterable);
         modelResult.setData(list);
         return modelResult;
+    }
+
+    @RequestMapping("/test-request-decrypt-response-encrypt-return-responseEntity")
+    public ResponseEntity<?> testRequestDecryptResponseEncryptBody_return_ResponseEntity(@RequestBody Map<String, String> map) {
+        ModelResult<List<City>> modelResult = new ModelResult<>();
+        cityRepository.save(new City(map.get("name"), map.get("city")));
+        Iterable<City> iterable = cityRepository.findAll();
+        ArrayList<City> list = Lists.newArrayList(iterable);
+        modelResult.setData(list);
+
+        return new ResponseEntity<>(modelResult, HttpStatus.OK);
+    }
+
+    @Async
+    @RequestMapping("/test-request-decrypt-response-encrypt-return-callable")
+    public Callable<?> testRequestDecryptResponseEncryptBody_return_callable(@RequestBody final Map<String, String> map) {
+        return new Callable<ModelResult<List<City>>>() {
+            @Override
+            public ModelResult<List<City>> call() throws Exception {
+                ModelResult<List<City>> modelResult = new ModelResult<>();
+                cityRepository.save(new City(map.get("name"), map.get("city")));
+                Iterable<City> iterable = cityRepository.findAll();
+                ArrayList<City> list = Lists.newArrayList(iterable);
+                modelResult.setData(list);
+                return modelResult;
+            }
+        };
     }
 }
