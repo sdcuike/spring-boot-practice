@@ -1,7 +1,5 @@
 package com.sdcuike.practice.controller.advice;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +11,8 @@ import org.springframework.web.util.WebUtils;
 
 import com.doctor.beaver.domain.result.BaseResult;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 异常处理
  * 
@@ -23,8 +23,8 @@ import com.doctor.beaver.domain.result.BaseResult;
  *         {@link ResponseEntityExceptionHandler}
  */
 @RestControllerAdvice
+@Slf4j
 public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
-    private final Logger log = LoggerFactory.getLogger(getClass());
 
     /**
      * 应用异常处理
