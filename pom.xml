@@ -237,7 +237,7 @@
                         </goals>
                         <configuration>
                             <backend>html5</backend>
-                            <outputDirectory>${basedir}/src/main/static/</outputDirectory>
+                            <outputDirectory>${basedir}/static/</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
