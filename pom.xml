@@ -12,10 +12,12 @@
     <inceptionYear>2016-10</inceptionYear>
 
     <properties>
+        <java.version>1.8</java.version>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
         <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,6 +27,8 @@
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
         <asciidoctor-plugin.version>1.5.3</asciidoctor-plugin.version>
         <springfox.version>2.6.1</springfox.version>
+
+        <spring-security-oauth2.version>2.1.0.RELEASE</spring-security-oauth2.version>
 
         <clean-plugin.version>3.0.0</clean-plugin.version>
         <compiler-plugin.version>3.5.1</compiler-plugin.version>
@@ -94,6 +98,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>${spring-security-oauth2.version}</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-actuator-docs</artifactId>

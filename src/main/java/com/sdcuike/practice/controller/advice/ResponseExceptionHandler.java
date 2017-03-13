@@ -40,7 +40,7 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
-     * spring mvc 内部异常处理
+     * spring mvc 内部异常处理ˇ
      */
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {

@@ -15,4 +15,5 @@ public class ScopedComponent {
         log.info(getClass() + "hashcode:{}", hashCode);
         return hashCode;
     }
+
 }

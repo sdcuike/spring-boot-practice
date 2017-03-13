@@ -428,6 +428,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_home">home</a></li>
 <li><a href="#_testjpa">testJPA</a></li>
+<li><a href="#_testrequestdecryptresponseencryptbody">testRequestDecryptResponseEncryptBody</a></li>
+<li><a href="#_testrequestdecryptresponseencryptbody_return_callable">testRequestDecryptResponseEncryptBody_return_callable</a></li>
+<li><a href="#_testrequestdecryptresponseencryptbody_return_responseentity">testRequestDecryptResponseEncryptBody_return_ResponseEntity</a></li>
 <li><a href="#_testconfig">testConfig</a></li>
 <li><a href="#_testconfig_e">testConfig_E</a></li>
 <li><a href="#_testconfig_2">testConfig_</a></li>
@@ -485,10 +488,10 @@ BasePath: /</p>
 <div class="ulist">
 <ul>
 <li>
-<p>example-controller: Example Controller</p>
+<p>Pet Service: All apis relating to pets</p>
 </li>
 <li>
-<p>Pet Service: All apis relating to pets</p>
+<p>example-controller: Example Controller</p>
 </li>
 </ul>
 </div>
@@ -623,11 +626,44 @@ BasePath: /</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_testconfig">testConfig</h3>
+<h3 id="_testrequestdecryptresponseencryptbody">testRequestDecryptResponseEncryptBody</h3>
 <div class="listingblock">
 <div class="content">
-<pre>POST /example/testConfig</pre>
+<pre>POST /example/test-request-decrypt-response-encrypt</pre>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_parameters">Parameters</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BodyParameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="_responses_3">Responses</h4>
@@ -648,7 +684,7 @@ BasePath: /</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_modelresult_string">ModelResult«string»</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_modelresult_list_city">ModelResult«List«City»»</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -685,11 +721,44 @@ BasePath: /</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_testconfig_e">testConfig_E</h3>
+<h3 id="_testrequestdecryptresponseencryptbody_return_callable">testRequestDecryptResponseEncryptBody_return_callable</h3>
 <div class="listingblock">
 <div class="content">
-<pre>POST /example/testConfigE</pre>
+<pre>POST /example/test-request-decrypt-response-encrypt-return-callable</pre>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_parameters_2">Parameters</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BodyParameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="_responses_4">Responses</h4>
@@ -710,7 +779,7 @@ BasePath: /</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_modelresult_string">ModelResult«string»</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#Callable«object»">[Callable«object»]</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -747,6 +816,225 @@ BasePath: /</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_testrequestdecryptresponseencryptbody_return_responseentity">testRequestDecryptResponseEncryptBody_return_ResponseEntity</h3>
+<div class="listingblock">
+<div class="content">
+<pre>POST /example/test-request-decrypt-response-encrypt-return-responseEntity</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_parameters_3">Parameters</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BodyParameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_responses_5">Responses</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_consumes_5">Consumes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_produces_5">Produces</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tags_6">Tags</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>example-controller</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testconfig">testConfig</h3>
+<div class="listingblock">
+<div class="content">
+<pre>POST /example/testConfig</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_responses_6">Responses</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_modelresult_string">ModelResult«string»</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_consumes_6">Consumes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_produces_6">Produces</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tags_7">Tags</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>example-controller</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testconfig_e">testConfig_E</h3>
+<div class="listingblock">
+<div class="content">
+<pre>POST /example/testConfigE</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_responses_7">Responses</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_modelresult_string">ModelResult«string»</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_consumes_7">Consumes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_produces_7">Produces</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tags_8">Tags</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>example-controller</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_testconfig_2">testConfig_</h3>
 <div class="listingblock">
 <div class="content">
@@ -754,7 +1042,7 @@ BasePath: /</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameters">Parameters</h4>
+<h4 id="_parameters_4">Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16%;">
@@ -787,7 +1075,7 @@ BasePath: /</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_responses_5">Responses</h4>
+<h4 id="_responses_8">Responses</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 33%;">
@@ -811,7 +1099,7 @@ BasePath: /</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_consumes_5">Consumes</h4>
+<h4 id="_consumes_8">Consumes</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -821,7 +1109,7 @@ BasePath: /</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_produces_5">Produces</h4>
+<h4 id="_produces_8">Produces</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -831,7 +1119,7 @@ BasePath: /</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tags_6">Tags</h4>
+<h4 id="_tags_9">Tags</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1039,7 +1327,7 @@ BasePath: /</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-14 16:34:48 CST
+Last updated 2017-03-06 16:26:50 +08:00
 </div>
 </div>
 </body>

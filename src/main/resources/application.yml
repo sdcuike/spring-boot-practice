@@ -19,4 +19,8 @@ logging:
                 
                 
         level:  
-            root: INFO
+            root: debug
+
+
+
+
