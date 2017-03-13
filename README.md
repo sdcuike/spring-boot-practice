@@ -3,6 +3,7 @@
 
 Spring Boot Practice
 
+
 ## 开发过程中:
 ###启动：
 - mvn spring-boot:run
@@ -35,3 +36,14 @@ mvn test -Dspring.profiles.active=doc
 [http://localhost:8989/springBoot/swagger-ui.html](http://localhost:8989/springBoot/swagger-ui.html)
 
 [http://localhost:8989/springBoot/v2/api-docs](http://localhost:8989/springBoot/v2/api-docs)
+
+
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+--------------------------
+- 对sping boot的扩展：[https://github.com/sdcuike/spring-boot-practice](https://github.com/sdcuike/spring-boot-practice)
+--------------------------
+
+- 
