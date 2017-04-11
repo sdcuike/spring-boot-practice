@@ -1,6 +1,25 @@
 commonConfig: 
             appName: spring-boot-practice
 
+datasource:
+  test:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password:
+    max-active: 100
+    max-idle: 10
+    max-wait: 10000
+    test-while-idle: true
+  esb:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/esb?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    max-active: 100
+    max-idle: 10
+    max-wait: 10000
+    test-while-idle: true
 
 # tomcat 配置
 #server.address: 
