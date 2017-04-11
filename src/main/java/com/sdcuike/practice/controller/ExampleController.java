@@ -1,16 +1,25 @@
 package com.sdcuike.practice.controller;
 
 import com.doctor.beaver.domain.result.ModelResult;
+import com.sdcuike.mybatis.pageable.PaginationUtil;
 import com.sdcuike.practice.domain.Company;
 import com.sdcuike.practice.mapper.CompanyMapper;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Map.Entry;
 
 @RestController
 @RequestMapping(path = "/example",
@@ -34,4 +43,26 @@ public class ExampleController {
         return companyMapper.selectAll();
     }
     
+    @GetMapping("/all_company/page")
+    public ModelResult<List<Company>> queryCompanys(Pageable pageable, HttpServletResponse response) {
+        ModelResult<List<Company>> result = new ModelResult<>();
+        Page<Company> companies = companyMapper.selectAllPageable(pageable);
+        result.setData(companies.getContent());
+    
+        HttpHeaders httpHeaders = PaginationUtil.generatePaginationHttpHeaders(companies, "/all_company/page");
+        for (Entry<String,List<String>> entry:httpHeaders.entrySet()){
+            String name = entry.getKey();
+            for (String value :entry.getValue()){
+                response.addHeader(name,value);
+            }
+    
+        }
+        return result;
+    }
+    
+    @Data
+    public static class QueryCompanysResponseDto {
+        private List<Company> companies;
+        private Pageable pageable;
+    }
 }

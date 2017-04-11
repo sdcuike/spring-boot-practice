@@ -24,9 +24,15 @@
 
     <typeAliases>
         <package name="com.sdcuike.practice.domain"/>
+        <package name="org.springframework.data.domain"/>
     </typeAliases>
 
     <typeHandlers>
     </typeHandlers>
 
+    <plugins>
+        <plugin interceptor="com.sdcuike.mybatis.pageable.MybatisPageableInterceptor" >
+            <property name="dialectClass" value="com.sdcuike.mybatis.pageable.MySQLDialect"/>
+        </plugin>
+    </plugins>
 </configuration>
