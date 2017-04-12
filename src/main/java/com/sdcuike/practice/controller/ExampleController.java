@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map.Entry;
@@ -44,19 +45,15 @@ public class ExampleController {
     }
     
     @GetMapping("/all_company/page")
-    public ModelResult<List<Company>> queryCompanys(Pageable pageable, HttpServletResponse response) {
+    public ModelResult<List<Company>> queryCompanys(Pageable pageable,
+                                                    HttpServletRequest request,
+                                                    HttpServletResponse response) {
+        
         ModelResult<List<Company>> result = new ModelResult<>();
         Page<Company> companies = companyMapper.selectAllPageable(pageable);
         result.setData(companies.getContent());
     
-        HttpHeaders httpHeaders = PaginationUtil.generatePaginationHttpHeaders(companies, "/all_company/page");
-        for (Entry<String,List<String>> entry:httpHeaders.entrySet()){
-            String name = entry.getKey();
-            for (String value :entry.getValue()){
-                response.addHeader(name,value);
-            }
-    
-        }
+        PaginationUtil.setPaginationHttpHeaders(companies,request,response);
         return result;
     }
     

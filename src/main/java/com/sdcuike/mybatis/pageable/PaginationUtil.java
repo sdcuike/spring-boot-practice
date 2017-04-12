@@ -3,8 +3,12 @@ package com.sdcuike.mybatis.pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Map.Entry;
 
 /**
  * Created by beaver on 2017/4/12.
@@ -13,7 +17,8 @@ public final class PaginationUtil {
     
     public static HttpHeaders generatePaginationHttpHeaders(Page<?> page, String baseUrl) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Total-Count", "" + page.getTotalElements());
+        headers.add("X-Pagination-Total", "" + page.getTotalElements());
+        
         String urlConnector = "?";
         if (baseUrl.contains("?")) {
             urlConnector = "&";
@@ -37,6 +42,15 @@ public final class PaginationUtil {
         return headers;
     }
     
+    public static void setPaginationHttpHeaders(Page<?> page, HttpServletRequest request, HttpServletResponse response){
+        HttpHeaders httpHeaders = PaginationUtil.generatePaginationHttpHeaders(page, request.getRequestURL().toString());
+        for (Entry<String,List<String>> entry:httpHeaders.entrySet()){
+            String name = entry.getKey();
+            for (String value :entry.getValue()){
+                response.addHeader(name,value);
+            }
+        }
+    }
     private static String getFirstUrl(Page<?> page, String baseUrl, String urlConnector)  {
         try {
             return "<" +
