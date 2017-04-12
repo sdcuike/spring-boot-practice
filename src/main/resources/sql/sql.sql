@@ -16,7 +16,7 @@ create table addresse
   zip varchar(10) default null,
   country varchar(50) not null,
   primary key (addr_id)
-) engine=innodb auto_increment=1 default charset=latin1;
+) engine=innodb auto_increment=1 default charset=utf8;
 
 create table student 
 (
@@ -30,7 +30,7 @@ create table student
   addr_id int(11) default null,  
   primary key (stud_id),
   constraint fk_student_addr foreign key (addr_id) references addresse (addr_id)
-) engine=innodb auto_increment=1 default charset=latin1;
+) engine=innodb auto_increment=1 default charset=utf8;
 
 create table tutor 
 (
@@ -44,7 +44,7 @@ create table tutor
   addr_id int(11) default null,
   primary key (tutor_id),
   constraint fk_tutor_addr foreign key (addr_id) references addresse (addr_id)  
-) engine=innodb auto_increment=1 default charset=latin1;
+) engine=innodb auto_increment=1 default charset=utf8;
 
 
 create table course 
@@ -57,7 +57,7 @@ create table course
   tutor_id int(11) not null,
   primary key (course_id),
   constraint fk_course_tutor foreign key (tutor_id) references tutor (tutor_id)
-) engine=innodb auto_increment=1 default charset=latin1;
+) engine=innodb auto_increment=1 default charset=utf8;
 
 
 create table course_enrollment
@@ -67,7 +67,7 @@ create table course_enrollment
   primary key (course_id,stud_id),
   constraint fk_enrollment_stud foreign key (stud_id) references student (stud_id),
   constraint fk_enrollment_course foreign key (course_id) references course (course_id)
-) engine=innodb default charset=latin1;
+) engine=innodb default charset=utf8;
 
 
 
@@ -78,7 +78,7 @@ create table user_pic
   pic blob,
   bio longtext,
   primary key (id)
-) engine=innodb auto_increment=1 default charset=latin1;
+) engine=innodb auto_increment=1 default charset=utf8;
 
 
 
@@ -112,3 +112,34 @@ insert into course_enrollment (course_id,stud_id) values
  (1,1),
  (1,2),
  (2,2);
+
+
+
+use test;
+drop table if exists atl_bank;
+drop table if exists company;
+
+create table atl_bank (
+  id bigint(20) not null auto_increment,
+  bank_name varchar(32) default null,
+  bank_code varchar(32) default null,
+  country_code varchar(10) default null,
+  bank_type varchar(32) default null,
+  created_date timestamp null default current_timestamp,
+  primary key (id)
+) engine=innodb auto_increment=813 default charset=utf8;
+
+create table company (
+  id bigint(20) not null auto_increment,
+  company_oid varchar(36) not null,
+  name varchar(255) not null,
+  logo_id bigint(20) default null,
+  created_by varchar(36) default 'system',
+  created_date timestamp null default current_timestamp,
+  done_register_lead bit(1) default b'1',
+  tax_id varchar(100) default null,
+  primary key (id),
+  unique key name (name),
+  unique key company_oid (company_oid),
+  unique key logo_id (logo_id)
+) engine=innodb auto_increment=3 default charset=utf8;
