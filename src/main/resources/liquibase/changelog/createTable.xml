@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="beaver (generated)" id="1492070727957-1">
+        <createTable catalogName="test" tableName="addresse">
+            <column autoIncrement="true" name="addr_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="street" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zip" type="VARCHAR(10)"/>
+            <column name="country" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-2">
+        <createTable catalogName="test" tableName="user_pic">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)"/>
+            <column name="pic" type="LONGBLOB"/>
+            <column name="bio" type="LONGTEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-3">
+        <createTable catalogName="test" tableName="student">
+            <column autoIncrement="true" name="stud_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(15)"/>
+            <column name="dob" type="date"/>
+            <column name="bio" type="LONGTEXT"/>
+            <column name="pic" type="LONGBLOB"/>
+            <column name="addr_id" type="INT(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-4">
+        <createTable catalogName="test" tableName="tutor">
+            <column autoIncrement="true" name="tutor_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(15)"/>
+            <column name="dob" type="date"/>
+            <column name="bio" type="LONGTEXT"/>
+            <column name="pic" type="LONGBLOB"/>
+            <column name="addr_id" type="INT(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-5">
+        <createTable catalogName="test" tableName="atl_bank">
+            <column autoIncrement="true" name="id" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="bank_name" type="VARCHAR(32)"/>
+            <column name="bank_code" type="VARCHAR(32)"/>
+            <column name="country_code" type="VARCHAR(10)"/>
+            <column name="bank_type" type="VARCHAR(32)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_date" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-6">
+        <createTable catalogName="test" tableName="course_enrollment">
+            <column name="course_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="stud_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-7">
+        <createTable catalogName="test" tableName="course">
+            <column autoIncrement="true" name="course_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(512)"/>
+            <column name="start_date" type="date"/>
+            <column name="end_date" type="date"/>
+            <column name="tutor_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-8">
+        <createTable catalogName="test" tableName="company">
+            <column autoIncrement="true" name="id" type="BIGINT(19)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="company_oid" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="logo_id" type="BIGINT(19)"/>
+            <column defaultValue="system" name="created_by" type="VARCHAR(36)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_date" type="TIMESTAMP"/>
+            <column defaultValueNumeric="1" name="done_register_lead" type="BIT(1)"/>
+            <column name="tax_id" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-9">
+        <addPrimaryKey catalogName="test" columnNames="course_id, stud_id" constraintName="PRIMARY" tableName="course_enrollment"/>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-10">
+        <addForeignKeyConstraint baseColumnNames="tutor_id" baseTableCatalogName="test" baseTableName="course" constraintName="fk_course_tutor" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="tutor_id" referencedTableCatalogName="test" referencedTableName="tutor"/>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-11">
+        <addForeignKeyConstraint baseColumnNames="addr_id" baseTableCatalogName="test" baseTableName="student" constraintName="fk_student_addr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="addr_id" referencedTableCatalogName="test" referencedTableName="addresse"/>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-12">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableCatalogName="test" baseTableName="course_enrollment" constraintName="fk_enrollment_course" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="course_id" referencedTableCatalogName="test" referencedTableName="course"/>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-13">
+        <addForeignKeyConstraint baseColumnNames="stud_id" baseTableCatalogName="test" baseTableName="course_enrollment" constraintName="fk_enrollment_stud" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="stud_id" referencedTableCatalogName="test" referencedTableName="student"/>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-14">
+        <addForeignKeyConstraint baseColumnNames="addr_id" baseTableCatalogName="test" baseTableName="tutor" constraintName="fk_tutor_addr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="addr_id" referencedTableCatalogName="test" referencedTableName="addresse"/>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-15">
+        <createIndex catalogName="test" indexName="logo_id" tableName="company" unique="true">
+            <column name="logo_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-16">
+        <createIndex catalogName="test" indexName="company_oid" tableName="company" unique="true">
+            <column name="company_oid"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1492070727957-17">
+        <createIndex catalogName="test" indexName="name" tableName="company" unique="true">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
