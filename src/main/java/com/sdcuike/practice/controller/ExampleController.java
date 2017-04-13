@@ -4,6 +4,7 @@ import com.doctor.beaver.domain.result.ModelResult;
 import com.sdcuike.mybatis.pageable.PaginationUtil;
 import com.sdcuike.practice.domain.Company;
 import com.sdcuike.practice.mapper.CompanyMapper;
+import io.swagger.annotations.ApiOperation;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -44,6 +45,7 @@ public class ExampleController {
         return companyMapper.selectAll();
     }
     
+    @ApiOperation(value = "queryCompanys", notes = "获取 公司分页")
     @GetMapping("/all_company/page")
     public ModelResult<List<Company>> queryCompanys(Pageable pageable,
                                                     HttpServletRequest request,
@@ -52,8 +54,8 @@ public class ExampleController {
         ModelResult<List<Company>> result = new ModelResult<>();
         Page<Company> companies = companyMapper.selectAllPageable(pageable);
         result.setData(companies.getContent());
-    
-        PaginationUtil.setPaginationHttpHeaders(companies,request,response);
+        
+        PaginationUtil.setPaginationHttpHeaders(companies, request, response);
         return result;
     }
     
