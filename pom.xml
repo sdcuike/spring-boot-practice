@@ -320,9 +320,10 @@
                     <defaultSchemaName>Test</defaultSchemaName>
                     <username>root</username>
                     <password/>
-                    <referenceUrl>
+                    <referenceUrl>jdbc:mysql://localhost:3306/Test1</referenceUrl>
+                    <referenceUsername>root</referenceUsername>
+                    <referencePassword></referencePassword>
 
-                    </referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>
                     <diffExcludeObjects>
