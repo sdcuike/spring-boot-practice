@@ -42,9 +42,14 @@ mvn test -Dspring.profiles.active=doc
 --------------------------
 --------------------------
 --------------------------
+
+
+
+# 项目目录
 --------------------------
 
 - 对sping boot的扩展：[https://github.com/sdcuike/spring-boot-practice](https://github.com/sdcuike/spring-boot-practice)
 
 --------------------------
 
+- spring-boot-mybatis demo [https://github.com/sdcuike/spring-boot-practice/tree/spring-boot-mybatis](https://github.com/sdcuike/spring-boot-practice/tree/spring-boot-mybatis)
