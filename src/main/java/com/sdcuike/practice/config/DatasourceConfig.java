@@ -3,6 +3,7 @@ package com.sdcuike.practice.config;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.boot.autoconfigure.SpringBootVFS;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -41,6 +42,7 @@ public class DatasourceConfig {
         public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
             
             SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+            sqlSessionFactoryBean.setVfs(SpringBootVFS.class);
             sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("/mybatis/mybatis-conf.xml"));
     
             ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
