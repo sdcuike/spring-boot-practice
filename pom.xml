@@ -22,7 +22,7 @@
         <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
+        <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <lombok.version>1.16.16</lombok.version>
         <org.mapstruct.version>1.2.0.Beta2</org.mapstruct.version>
 
