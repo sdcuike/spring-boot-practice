@@ -1,18 +1,17 @@
 package com.sdcuike.practice.domain;
 
-import java.io.Serializable;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import lombok.Getter;
-import lombok.Setter;
+import java.io.Serializable;
 
 @Entity
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 public class City implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -25,12 +24,4 @@ public class City implements Serializable {
 
     @Column(nullable = false)
     private String            state;
-
-    public City(String name, String state) {
-        this.name = name;
-        this.state = state;
-    }
-
-    protected City() {
-    }
 }

@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 	                         http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
@@ -22,13 +22,18 @@
         <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
-        <lombok.version>1.16.12</lombok.version>
+        <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
+        <lombok.version>1.16.16</lombok.version>
+        <org.mapstruct.version>1.2.0.Beta2</org.mapstruct.version>
+
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
         <asciidoctor-plugin.version>1.5.3</asciidoctor-plugin.version>
         <springfox.version>2.6.1</springfox.version>
-
+        <mybatis-spring-boot.version>1.3.0</mybatis-spring-boot.version>
+        <mybatis-typehandlers-jsr310.version>1.0.2</mybatis-typehandlers-jsr310.version>
         <spring-security-oauth2.version>2.1.0.RELEASE</spring-security-oauth2.version>
+
+        <jackson.version>2.9.0.pr2</jackson.version>
 
         <clean-plugin.version>3.0.0</clean-plugin.version>
         <compiler-plugin.version>3.5.1</compiler-plugin.version>
@@ -38,13 +43,13 @@
         <assembly-plugin.version>2.6</assembly-plugin.version>
         <source-plugin.version>3.0.0</source-plugin.version>
         <jar-plugin.version>2.6</jar-plugin.version>
+        <maven.test.skip>false</maven.test.skip>
 
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <!-- Import dependency management from Spring Boot -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
@@ -88,6 +93,19 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+            <version>${org.mapstruct.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${org.mapstruct.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -99,14 +117,31 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis-spring-boot.version}</version>
         </dependency>
+
         <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>
-            <version>${spring-security-oauth2.version}</version>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-typehandlers-jsr310</artifactId>
+            <version>${mybatis-typehandlers-jsr310.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.security.oauth</groupId>-->
+        <!--<artifactId>spring-security-oauth2</artifactId>-->
+        <!--<version>${spring-security-oauth2.version}</version>-->
+        <!--</dependency>-->
 
 
         <dependency>
@@ -127,7 +162,47 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>${springfox.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mapstruct</groupId>
+                    <artifactId>mapstruct</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
+        <!--  jackson  -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
@@ -182,21 +257,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok-maven-plugin</artifactId>
-                <version>1.16.12.0</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>delombok</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>${clean-plugin.version}</version>
@@ -206,7 +266,29 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${compiler-plugin.version}</version>
                 <configuration>
-                    <!-- put your configurations here -->
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                    <compilerArgs>
+                        <compilerArg>
+                            -Amapstruct.suppressGeneratorTimestamp=false
+                        </compilerArg>
+                        <compilerArg>
+                            -Amapstruct.suppressGeneratorVersionInfoComment=false
+                        </compilerArg>
+                        <compilerArg>
+                            -Amapstruct.defaultComponentModel=spring
+                        </compilerArg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
@@ -270,6 +352,88 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>mybatis-generator-and-liquibase-maven-plugin</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.mybatis.generator</groupId>
+                        <artifactId>mybatis-generator-maven-plugin</artifactId>
+                        <version>1.3.5</version>
+                        <configuration>
+                            <configurationFile>src/main/resources/mybatis-generator/generatorConfig.xml
+                            </configurationFile>
+                            <verbose>true</verbose>
+                            <overwrite>false</overwrite>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>Generate MyBatis Artifacts</id>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.mybatis.generator</groupId>
+                                <artifactId>mybatis-generator-core</artifactId>
+                                <version>1.3.5</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <version>3.5.3</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.javassist</groupId>
+                                <artifactId>javassist</artifactId>
+                                <version>3.18.2-GA</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.liquibase.ext</groupId>
+                                <artifactId>liquibase-hibernate4</artifactId>
+                                <version>3.6</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.springframework.boot</groupId>
+                                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                                <version>${spring-boot.version}</version>
+                            </dependency>
+                        </dependencies>
+                        <configuration>
+                            <changeLogFile>src/main/resources/liquibase/master.xml</changeLogFile>
+                            <diffChangeLogFile>
+                                src/main/resources/liquibase/changelog/${maven.build.timestamp}_changelog.xml
+                            </diffChangeLogFile>
+                            <driver>com.mysql.jdbc.Driver</driver>
+                            <url>jdbc:mysql://localhost:3306/Test</url>
+                            <defaultSchemaName>Test</defaultSchemaName>
+                            <username>root</username>
+                            <password/>
+                            <referenceUrl>jdbc:mysql://localhost:3306/Test1</referenceUrl>
+                            <referenceUsername>root</referenceUsername>
+                            <referencePassword></referencePassword>
+
+                            <verbose>true</verbose>
+                            <logging>debug</logging>
+                            <diffExcludeObjects>
+
+                            </diffExcludeObjects>
+                            <outputChangeLogFile>
+                                src/main/resources/liquibase/changelog/${maven.build.timestamp}-generatedChangeLog.xml
+                            </outputChangeLogFile>
+                            <outputFileEncoding>utf8</outputFileEncoding>
+                        </configuration>
+                    </plugin>
+                </plugins>
+
+            </build>
+        </profile>
+    </profiles>
     <repositories>
         <repository>
             <id>io.spring.repo.maven.release</id>

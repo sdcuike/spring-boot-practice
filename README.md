@@ -53,3 +53,6 @@ mvn test -Dspring.profiles.active=doc
 --------------------------
 
 - spring-boot-mybatis demo [https://github.com/sdcuike/spring-boot-practice/tree/spring-boot-mybatis](https://github.com/sdcuike/spring-boot-practice/tree/spring-boot-mybatis)
+ 
+  辅助插件使用：
+ ![https://raw.githubusercontent.com/sdcuike/spring-boot-practice/spring-boot-mybatis/src/test/resources/images/WechatIMG1.png](https://raw.githubusercontent.com/sdcuike/spring-boot-practice/spring-boot-mybatis/src/test/resources/images/WechatIMG1.png)
