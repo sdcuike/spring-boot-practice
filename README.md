@@ -48,7 +48,7 @@ mvn test -Dspring.profiles.active=doc
 # 项目目录
 --------------------------
 
-- 对sping boot的扩展：[https://github.com/sdcuike/spring-boot-practice](https://github.com/sdcuike/spring-boot-practice)
+- 对sping boot的扩展：[https://github.com/sdcuike/spring-boot-practice/tree/spring-boot-extend](https://github.com/sdcuike/spring-boot-practice/tree/spring-boot-extend)
 
 --------------------------
 
