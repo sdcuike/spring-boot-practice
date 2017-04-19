@@ -26,3 +26,8 @@ insert into course_enrollment (course_id,stud_id) values
  (1,1),
  (1,2),
  (2,2);
+
+
+insert into test.company
+(id, company_oid, name, logo_id, created_by, created_date, done_register_lead, tax_id, company_type, update_date)
+values(3, '13', 'ww', 2, 'ew', '2017-04-19 17:34:27.000', 1, '1', '1', '2017-04-19 17:34:27.000');

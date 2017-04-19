@@ -43,3 +43,11 @@ logging:
 
 
 
+# JACKSON (JacksonProperties)
+spring:
+    jackson:
+          date-format:  yyyy-MM-dd'T'HH:mm
+          joda-date-time-format:  yyyy-MM-dd'T'HH:mm
+          time-zone:  GMT+8
+          serialization:
+                      WRITE_DATES_AS_TIMESTAMPS:  false

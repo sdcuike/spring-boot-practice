@@ -13,9 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -59,6 +57,11 @@ public class ExampleController {
         return result;
     }
     
+    @PostMapping("/company")
+    public void insertCompany(@RequestBody Company company){
+        companyMapper.insert(company);
+    
+    }
     @Data
     public static class QueryCompanysResponseDto {
         private List<Company> companies;
