@@ -8,12 +8,13 @@
     <artifactId>spring-boot-practice</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>${project.artifactId}</name>
+    <packaging>war</packaging>
     <description></description>
     <inceptionYear>2016-10</inceptionYear>
 
     <properties>
         <java.version>1.8</java.version>
-
+        <docker.image.prefix>com.sdcuike.beaver</docker.image.prefix>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -36,6 +37,7 @@
         <jackson.version>2.9.0.pr2</jackson.version>
 
         <clean-plugin.version>3.0.0</clean-plugin.version>
+        <maven-war-plugin.version>2.2</maven-war-plugin.version>
         <compiler-plugin.version>3.5.1</compiler-plugin.version>
         <deploy-plugin.version>2.8.2</deploy-plugin.version>
         <install-plugin.version>2.5.2</install-plugin.version>
@@ -229,6 +231,7 @@
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -241,6 +244,14 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
@@ -334,7 +345,7 @@
                         </goals>
                         <configuration>
                             <backend>html5</backend>
-                            <outputDirectory>${basedir}/static/</outputDirectory>
+                            <outputDirectory>${basedir}/src/main/resources/static/</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -347,6 +358,28 @@
                         <toclevels>2</toclevels>
                         <generated>${project.build.directory}/docs/asciidoc/generated</generated>
                     </attributes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.13</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.${project.packaging}</include>
+                        </resource>
+                    </resources>
+                    <forceTags>true</forceTags>
+                    <imageTags>
+                        <imageTag>${project.version}</imageTag>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
                 </configuration>
             </plugin>
         </plugins>
