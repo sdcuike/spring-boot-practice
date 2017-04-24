@@ -47,7 +47,7 @@
                selectByExampleQueryId="false">
         </table>
 
-        <table tableName="addresse" domainObjectName="Address"
+        <table tableName="address" domainObjectName="Address"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
