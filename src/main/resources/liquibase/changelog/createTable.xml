@@ -1,8 +1,8 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
     <changeSet author="beaver (generated)" id="1492593925611-1">
-        <createTable tableName="addresse">
-            <column autoIncrement="true" name="addr_id" type="INT">
+        <createTable tableName="address">
+            <column autoIncrement="true" name="addr_id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
             <column name="street" type="VARCHAR(50)">
@@ -52,7 +52,7 @@
             </column>
             <column defaultValueBoolean="true" name="done_register_lead" type="BIT(1)"/>
             <column name="tax_id" type="VARCHAR(100)"/>
-            <column name="company_type" type="VARCHAR(100)"/>
+            <column name="company_type" type="INT"/>
             <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_date" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
@@ -60,7 +60,7 @@
     </changeSet>
     <changeSet author="beaver (generated)" id="1492593925611-4">
         <createTable tableName="course">
-            <column autoIncrement="true" name="course_id" type="INT">
+            <column autoIncrement="true" name="course_id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
             <column name="name" type="VARCHAR(100)">
@@ -69,24 +69,24 @@
             <column name="description" type="VARCHAR(512)"/>
             <column name="start_date" type="date"/>
             <column name="end_date" type="date"/>
-            <column name="tutor_id" type="INT">
+            <column name="tutor_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
     <changeSet author="beaver (generated)" id="1492593925611-5">
         <createTable tableName="course_enrollment">
-            <column name="course_id" type="INT">
+            <column name="course_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="stud_id" type="INT">
+            <column name="stud_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
     <changeSet author="beaver (generated)" id="1492593925611-6">
         <createTable tableName="student">
-            <column autoIncrement="true" name="stud_id" type="INT">
+            <column autoIncrement="true" name="stud_id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
             <column name="name" type="VARCHAR(50)">
@@ -99,12 +99,12 @@
             <column name="dob" type="date"/>
             <column name="bio" type="LONGTEXT"/>
             <column name="pic" type="LONGBLOB"/>
-            <column name="addr_id" type="INT"/>
+            <column name="addr_id" type="BIGINT"/>
         </createTable>
     </changeSet>
     <changeSet author="beaver (generated)" id="1492593925611-7">
         <createTable tableName="tutor">
-            <column autoIncrement="true" name="tutor_id" type="INT">
+            <column autoIncrement="true" name="tutor_id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
             <column name="name" type="VARCHAR(50)">
@@ -117,12 +117,12 @@
             <column name="dob" type="date"/>
             <column name="bio" type="LONGTEXT"/>
             <column name="pic" type="LONGBLOB"/>
-            <column name="addr_id" type="INT"/>
+            <column name="addr_id" type="BIGINT"/>
         </createTable>
     </changeSet>
     <changeSet author="beaver (generated)" id="1492593925611-8">
         <createTable tableName="user_pic">
-            <column autoIncrement="true" name="id" type="INT">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
             <column name="name" type="VARCHAR(50)"/>
@@ -172,9 +172,9 @@
         <addForeignKeyConstraint baseColumnNames="stud_id" baseTableName="course_enrollment" constraintName="fk_enrollment_stud" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="stud_id" referencedTableName="student"/>
     </changeSet>
     <changeSet author="beaver (generated)" id="1492593925611-20">
-        <addForeignKeyConstraint baseColumnNames="addr_id" baseTableName="student" constraintName="fk_student_addr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="addr_id" referencedTableName="addresse"/>
+        <addForeignKeyConstraint baseColumnNames="addr_id" baseTableName="student" constraintName="fk_student_addr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="addr_id" referencedTableName="address"/>
     </changeSet>
     <changeSet author="beaver (generated)" id="1492593925611-21">
-        <addForeignKeyConstraint baseColumnNames="addr_id" baseTableName="tutor" constraintName="fk_tutor_addr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="addr_id" referencedTableName="addresse"/>
+        <addForeignKeyConstraint baseColumnNames="addr_id" baseTableName="tutor" constraintName="fk_tutor_addr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="addr_id" referencedTableName="address"/>
     </changeSet>
 </databaseChangeLog>

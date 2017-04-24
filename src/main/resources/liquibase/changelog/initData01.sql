@@ -1,5 +1,5 @@
 
-insert into addresse (addr_id,street,city,state,zip,country) values
+insert into address (addr_id,street,city,state,zip,country) values
  (1,'4891 pacific hwy','san diego','ca','92110','san diego'),
  (2,'2400 n jefferson st','perry','fl','32347','taylor'),
  (3,'710 n cable rd','lima','oh','45825','allen'),
