@@ -8,5 +8,7 @@ import org.mapstruct.Mapper;
  */
 @Mapper
 public interface CityDtoMapper {
-    CityDto cityToDto(City city);
+    InsertCityRequestDto cityToDto(City city);
+    City cityDto2City(InsertCityRequestDto insertCityRequestDto);
+    City cityDto2City(UpdateCityRequestDto updateCityRequestDto);
 }

@@ -1,5 +1,6 @@
 package com.sdcuike.practice.domain;
 
+import com.sdcuike.mybatis.auditor.AbstractAuditingEntity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -7,10 +8,10 @@ import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
-public class City implements Serializable {
+public class City extends AbstractAuditingEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private long              id;
+    private Long              id;
 
     private String            name;
 

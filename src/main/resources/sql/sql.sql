@@ -127,7 +127,7 @@ create table atl_bank (
   bank_type varchar(32) default null,
   created_date timestamp null default current_timestamp,
   primary key (id)
-) engine=innodb auto_increment=813 default charset=utf8;
+) engine=innodb  default charset=utf8;
 
 create table company (
   id bigint(20) not null auto_increment,
@@ -142,4 +142,18 @@ create table company (
   unique key name (name),
   unique key company_oid (company_oid),
   unique key logo_id (logo_id)
-) engine=innodb auto_increment=3 default charset=utf8;
+) engine=innodb  default charset=utf8;
+
+
+
+CREATE TABLE city (
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	name varchar(100) NOT NULL,
+	state varchar(100) NOT NULL,
+	create_time TIMESTAMP NULL,
+	create_by varchar(100) NULL,
+	lastmodified_time TIMESTAMP NULL,
+	lastmodified_by varchar(100) NULL,
+	CONSTRAINT city_UN UNIQUE KEY (name),
+	CONSTRAINT city_PK PRIMARY KEY (id)
+)engine=innodb  default charset=utf8;

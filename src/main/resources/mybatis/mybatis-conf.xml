@@ -46,5 +46,6 @@
         <plugin interceptor="com.sdcuike.mybatis.pageable.MybatisPageableInterceptor">
             <property name="dialectClass" value="com.sdcuike.mybatis.pageable.MySQLDialect"/>
         </plugin>
+        <plugin interceptor="com.sdcuike.mybatis.auditor.AuditingInterceptor"/>
     </plugins>
 </configuration>
