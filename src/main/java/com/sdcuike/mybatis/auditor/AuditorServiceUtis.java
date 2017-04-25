@@ -14,4 +14,8 @@ public final class AuditorServiceUtis {
     public static String getUserId() {
         return userIds.get();
     }
+    
+    public static void remove() {
+        userIds.remove();
+    }
 }
