@@ -1,4 +1,4 @@
-package com.sdcuike.mybatis.type.handler;
+package com.sdcuike.practice.type.handler;
 
 import com.sdcuike.mybatis.type.EnumValueTypeHandler;
 import com.sdcuike.practice.domain.CompanyType;

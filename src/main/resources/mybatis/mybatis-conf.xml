@@ -39,7 +39,7 @@
         <typeHandler handler="org.apache.ibatis.type.MonthTypeHandler"/>
         <typeHandler handler="org.apache.ibatis.type.YearMonthTypeHandler"/>
         <typeHandler handler="org.apache.ibatis.type.JapaneseDateTypeHandler"/>
-        <package name="com.sdcuike.mybatis.type"/>
+        <package name="com.sdcuike.practice.type.handler"/>
     </typeHandlers>
 
     <plugins>

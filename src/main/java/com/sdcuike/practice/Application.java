@@ -16,10 +16,13 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
  *         <p>
  *         We recommend that you follow Java’s recommended package naming conventions and use a reversed domain name (for example, com.example.project)
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,
-        MybatisAutoConfiguration.class,
-        JpaRepositoriesAutoConfiguration.class,
-        HibernateJpaAutoConfiguration.class})
+@SpringBootApplication(
+        exclude = {DataSourceAutoConfiguration.class,
+                MybatisAutoConfiguration.class,
+                JpaRepositoriesAutoConfiguration.class,
+                HibernateJpaAutoConfiguration.class},
+        scanBasePackages = {"com.sdcuike.practice",
+                "com.sdcuike.spring.controller.advice"})
 public class Application {
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(Application.class);
