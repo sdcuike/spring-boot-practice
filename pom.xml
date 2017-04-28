@@ -35,7 +35,7 @@
         <spring-security-oauth2.version>2.1.0.RELEASE</spring-security-oauth2.version>
 
         <jackson.version>2.9.0.pr2</jackson.version>
-
+        <liquibase.version>3.5.3</liquibase.version>
         <clean-plugin.version>3.0.0</clean-plugin.version>
         <maven-war-plugin.version>2.2</maven-war-plugin.version>
         <compiler-plugin.version>3.5.1</compiler-plugin.version>
@@ -223,6 +223,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
+        </dependency>
         <!-- test -->
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
@@ -425,7 +430,7 @@
                     <plugin>
                         <groupId>org.liquibase</groupId>
                         <artifactId>liquibase-maven-plugin</artifactId>
-                        <version>3.5.3</version>
+                        <version>${liquibase.version}}</version>
                         <dependencies>
                             <dependency>
                                 <groupId>org.javassist</groupId>

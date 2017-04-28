@@ -38,7 +38,7 @@ logging:
                 
                 
         level:  
-            root: debug
+            root: info
 
 
 
@@ -51,3 +51,12 @@ spring:
           time-zone:  GMT+8
           serialization:
                       WRITE_DATES_AS_TIMESTAMPS:  false
+
+# 异步线程池配置
+async:
+    core-pool-size: 2
+    max-pool-size: 50
+    queue-capacity: 10000
+    namePrefix: spring-boot-practice
+
+
