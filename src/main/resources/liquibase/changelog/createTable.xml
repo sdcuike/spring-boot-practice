@@ -1,5 +1,9 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
     <changeSet author="beaver (generated)" id="1492593925611-1">
         <createTable tableName="address">
             <column autoIncrement="true" name="addr_id" type="BIGINT">
@@ -163,18 +167,62 @@
         </createIndex>
     </changeSet>
     <changeSet author="beaver (generated)" id="1492593925611-17">
-        <addForeignKeyConstraint baseColumnNames="tutor_id" baseTableName="course" constraintName="fk_course_tutor" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="tutor_id" referencedTableName="tutor"/>
+        <addForeignKeyConstraint baseColumnNames="tutor_id" baseTableName="course" constraintName="fk_course_tutor"
+                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="tutor_id" referencedTableName="tutor"/>
     </changeSet>
     <changeSet author="beaver (generated)" id="1492593925611-18">
-        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="course_enrollment" constraintName="fk_enrollment_course" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="course_id" referencedTableName="course"/>
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="course_enrollment"
+                                 constraintName="fk_enrollment_course" deferrable="false" initiallyDeferred="false"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="course_id"
+                                 referencedTableName="course"/>
     </changeSet>
     <changeSet author="beaver (generated)" id="1492593925611-19">
-        <addForeignKeyConstraint baseColumnNames="stud_id" baseTableName="course_enrollment" constraintName="fk_enrollment_stud" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="stud_id" referencedTableName="student"/>
+        <addForeignKeyConstraint baseColumnNames="stud_id" baseTableName="course_enrollment"
+                                 constraintName="fk_enrollment_stud" deferrable="false" initiallyDeferred="false"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="stud_id"
+                                 referencedTableName="student"/>
     </changeSet>
     <changeSet author="beaver (generated)" id="1492593925611-20">
-        <addForeignKeyConstraint baseColumnNames="addr_id" baseTableName="student" constraintName="fk_student_addr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="addr_id" referencedTableName="address"/>
+        <addForeignKeyConstraint baseColumnNames="addr_id" baseTableName="student" constraintName="fk_student_addr"
+                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="addr_id" referencedTableName="address"/>
     </changeSet>
     <changeSet author="beaver (generated)" id="1492593925611-21">
-        <addForeignKeyConstraint baseColumnNames="addr_id" baseTableName="tutor" constraintName="fk_tutor_addr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="addr_id" referencedTableName="address"/>
+        <addForeignKeyConstraint baseColumnNames="addr_id" baseTableName="tutor" constraintName="fk_tutor_addr"
+                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="addr_id" referencedTableName="address"/>
+    </changeSet>
+
+
+    <changeSet author="beaver (generated)" id="1493689341591-1">
+        <createTable tableName="city">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" remarks="城市中文名字" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" remarks="省份" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="beaver (generated)" id="1493689341591-2">
+        <addUniqueConstraint columnNames="name" constraintName="city_UN" tableName="city"/>
+    </changeSet>
+
+
+    <changeSet author="beaver (generated)" id="1493692553308-1">
+        <addColumn tableName="city">
+            <column name="create_by" type="VARCHAR(100 BYTE)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="create_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastmodified_by" type="VARCHAR(100 BYTE)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="lastmodified_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
     </changeSet>
 </databaseChangeLog>
