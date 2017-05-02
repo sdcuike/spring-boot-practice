@@ -1,25 +1,22 @@
 package com.sdcuike.practice.controller;
 
 import com.doctor.beaver.domain.result.ModelResult;
-import com.sdcuike.mybatis.pageable.PaginationUtil;
 import com.sdcuike.practice.domain.Company;
 import com.sdcuike.practice.mapper.CompanyMapper;
+import com.sdcuike.spring.extend.web.util.PaginationUtil;
 import io.swagger.annotations.ApiOperation;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Map.Entry;
 
 @RestController
 @RequestMapping(path = "/example",
@@ -47,13 +44,13 @@ public class ExampleController {
     @GetMapping("/all_company/page")
     public ModelResult<List<Company>> queryCompanys(Pageable pageable,
                                                     HttpServletRequest request,
-                                                    HttpServletResponse response) {
+                                                    HttpServletResponse response) throws URISyntaxException {
         
         ModelResult<List<Company>> result = new ModelResult<>();
         Page<Company> companies = companyMapper.selectAllPageable(pageable);
         result.setData(companies.getContent());
         
-        PaginationUtil.setPaginationHttpHeaders(companies, request, response);
+        PaginationUtil.setPaginationHttpHeaders(companies, request,response);
         return result;
     }
     
