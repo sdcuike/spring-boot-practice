@@ -1,4 +1,4 @@
-package com.sdcuike.practice.domain;
+package com.sdcuike.practice.domain.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -6,9 +6,13 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Created by beaver on 2017/5/2.
+ */
 @Data
 @NoArgsConstructor
-public class Student {
+public class StudentDto {
+    
     private Long studId;
     
     private String name;
@@ -19,5 +23,5 @@ public class Student {
     
     private LocalDateTime dob;
     
-    private List<Address> addresses;
+    private List<AddressDto> addresses;
 }

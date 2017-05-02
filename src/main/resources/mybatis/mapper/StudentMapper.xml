@@ -7,19 +7,25 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="dob" jdbcType="DATE" property="dob" />
-    <result column="addr_id" jdbcType="BIGINT" property="addrId" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sdcuike.practice.domain.StudentWithBLOBs">
     <result column="bio" jdbcType="LONGVARCHAR" property="bio" />
     <result column="pic" jdbcType="LONGVARBINARY" property="pic" />
   </resultMap>
+
+  <resultMap id="ResultMapWithAddress" type="StudentWithBLOBs" extends="BaseResultMap">
+    <collection property="addresses" column="addr_id"
+      select="com.sdcuike.practice.mapper.AddressMapper.selectByPrimaryKey"/>
+  </resultMap>
+
   <sql id="Base_Column_List">
     stud_id, name, email, phone, dob, addr_id
   </sql>
   <sql id="Blob_Column_List">
     bio, pic
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithAddress">
     select 
     <include refid="Base_Column_List" />
     ,
