@@ -26,7 +26,7 @@ datasource:
 server:
       port: 8989
       contextPath:  /springBoot
-      displayName:  spring-boot-practice   
+      displayName:  ${spring.application.name}
 # 日志配置
 logging:
         file: ${commonConfig.appName}.log
@@ -51,6 +51,13 @@ spring:
           time-zone:  GMT+8
           serialization:
                       WRITE_DATES_AS_TIMESTAMPS:  false
+    application:
+      name: spring-boot-practice
+
+
+
+
+
 
 # 异步线程池配置
 async:
