@@ -54,4 +54,9 @@ public class CityController {
         }
         return modelResult;
     }
+    
+    @GetMapping("/get/{id}")
+    public City queryById(@PathVariable("id") Long id) {
+        return cityMapper.selectByPrimaryKey(id);
+    }
 }

@@ -10,7 +10,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class City extends AbstractAuditingEntity implements Serializable {
     private static final long serialVersionUID = 1L;
-
+    
+    /**
+     * 城市id
+     */
     private Long              id;
 
     private String            name;

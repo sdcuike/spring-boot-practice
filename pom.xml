@@ -46,7 +46,7 @@
         <source-plugin.version>3.0.0</source-plugin.version>
         <jar-plugin.version>2.6</jar-plugin.version>
         <maven.test.skip>false</maven.test.skip>
-
+        <enunciate.version>2.9.1</enunciate.version>
     </properties>
 
     <dependencyManagement>
@@ -239,11 +239,45 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.webcohesion.enunciate</groupId>
+            <artifactId>enunciate-core</artifactId>
+            <version>${enunciate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.webcohesion.enunciate</groupId>
+            <artifactId>enunciate-core-annotations</artifactId>
+            <version>${enunciate.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
+            <plugin>
+                <groupId>com.webcohesion.enunciate</groupId>
+                <artifactId>enunciate-maven-plugin</artifactId>
+                <version>${enunciate.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
+                        <configuration>
+                            <docsDir>${project.build.directory}/docs</docsDir>
+                            <configFile>enunciate.xml</configFile>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.webcohesion.enunciate</groupId>
+                        <artifactId>enunciate-lombok</artifactId>
+                        <version>${enunciate.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
