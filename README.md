@@ -5,7 +5,7 @@ Spring Boot Practice
 
 
 ## 开发过程中:
-###启动：
+###  启动：
 - mvn spring-boot:run
 - 在IDE中运行java应用程序启动
 
@@ -59,7 +59,7 @@ mvn test -Dspring.profiles.active=doc
   辅助插件使用：
  ![https://raw.githubusercontent.com/sdcuike/spring-boot-practice/spring-boot-mybatis/src/test/resources/images/WechatIMG1.png](https://raw.githubusercontent.com/sdcuike/spring-boot-practice/spring-boot-mybatis/src/test/resources/images/WechatIMG1.png)
 
-#外部简化开发工具
+# 外部简化开发工具
 
 - 数据库版本管理 [liquibase 使用](https://github.com/sdcuike/liquibase-demo)，[官网](http://www.liquibase.org)
 
