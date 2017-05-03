@@ -38,6 +38,8 @@ mvn test -Dspring.profiles.active=doc
 [http://localhost:8989/springBoot/v2/api-docs](http://localhost:8989/springBoot/v2/api-docs)
 
 
+- enunciate两种文档生成[https://github.com/stoicflame/enunciate](https://github.com/stoicflame/enunciate),
+  而且支持Lombok，见[https://github.com/stoicflame/enunciate/wiki/Lombok](https://github.com/stoicflame/enunciate/wiki/Lombok)
 --------------------------
 --------------------------
 --------------------------
@@ -56,3 +58,9 @@ mvn test -Dspring.profiles.active=doc
  
   辅助插件使用：
  ![https://raw.githubusercontent.com/sdcuike/spring-boot-practice/spring-boot-mybatis/src/test/resources/images/WechatIMG1.png](https://raw.githubusercontent.com/sdcuike/spring-boot-practice/spring-boot-mybatis/src/test/resources/images/WechatIMG1.png)
+
+#外部简化开发工具
+
+- 数据库版本管理 [liquibase 使用](https://github.com/sdcuike/liquibase-demo)，[官网](http://www.liquibase.org)
+
+- MyBatis 代码生成[使用](https://github.com/sdcuike/mybatis-generator-core-1.3.5-demo),[官网](http://www.mybatis.org/generator/)
