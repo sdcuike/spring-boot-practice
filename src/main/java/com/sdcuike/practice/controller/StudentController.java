@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by beaver on 2017/5/2.
  */
 @RestController
-@RequestMapping(path = "/student",
-        consumes = MediaType.APPLICATION_JSON_VALUE,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/student", produces = MediaType.APPLICATION_JSON_VALUE)
 @Slf4j
 public class StudentController {
     

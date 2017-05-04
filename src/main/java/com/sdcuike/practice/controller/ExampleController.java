@@ -19,9 +19,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/example",
-        consumes = MediaType.APPLICATION_JSON_VALUE,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/example", produces = MediaType.APPLICATION_JSON_VALUE)
 @Slf4j
 public class ExampleController {
     

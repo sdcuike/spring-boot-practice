@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by beaver on 2017/4/25.
  */
 @RestController
-@RequestMapping(path = "/city",
-        consumes = MediaType.APPLICATION_JSON_VALUE,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/city", produces = MediaType.APPLICATION_JSON_VALUE)
 @Slf4j
 public class CityController {
     @Autowired
@@ -26,6 +24,12 @@ public class CityController {
     @Autowired
     private CityDtoMapper cityDtoMapper;
     
+    /**
+     * 城市收录
+     *
+     * @param insertCityRequestDto
+     * @return
+     */
     @PutMapping("/insert")
     public ModelResult<City> insertCity(@Validated @RequestBody InsertCityRequestDto insertCityRequestDto) {
         ModelResult<City> modelResult = new ModelResult<>();

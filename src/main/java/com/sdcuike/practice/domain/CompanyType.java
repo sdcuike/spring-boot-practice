@@ -12,15 +12,21 @@ import lombok.ToString;
 @Getter
 @ToString
 public enum CompanyType implements IEnumValueType {
+    /**
+     * 1, "类型1"
+     */
     A(1, "类型1"),
+    /**
+     * 2, "类型2"
+     */
     B(2, "类型2");
     
     private int code;
-    private String name;
+    private String description;
     
-    CompanyType(int code, String name) {
+    CompanyType(int code, String description) {
         this.code = code;
-        this.name = name;
+        this.description = description;
     }
     
     @Override
