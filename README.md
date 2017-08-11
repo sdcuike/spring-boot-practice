@@ -43,7 +43,6 @@ mvn test -Dspring.profiles.active=doc
 --------------------------
 --------------------------
 enunciate 在配置文件中修改模板（js加载太慢，到源文件里copy一份，修改js地址）
-
 <modules>
     <docs freemarkerTemplate="${project.basedir}/dist/docs.fmt"/>
     <jackson1 disabled="true"/>
