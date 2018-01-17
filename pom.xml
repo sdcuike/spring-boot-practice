@@ -2,19 +2,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 	                         http://maven.apache.org/maven-v4_0_0.xsd">
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.0.M7</version>
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.doctor</groupId>
+    <groupId>com.sdcuike</groupId>
     <artifactId>spring-boot-practice</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>2018.1.17-SNAPSHOT</version>
     <name>${project.artifactId}</name>
     <packaging>war</packaging>
     <description></description>
-    <inceptionYear>2016-10</inceptionYear>
+    <inceptionYear>2018-1-17</inceptionYear>
 
     <properties>
         <java.version>1.8</java.version>
-        <docker.image.prefix>com.sdcuike.beaver</docker.image.prefix>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -23,7 +28,7 @@
         <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
+        <spring-boot.version>2.0.0.M7</spring-boot.version>
         <lombok.version>1.16.16</lombok.version>
         <org.mapstruct.version>1.2.0.Beta2</org.mapstruct.version>
 
@@ -63,32 +68,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.doctor</groupId>
-            <artifactId>beaver</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sdcuike</groupId>
-            <artifactId>spring-boot-integration</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>19.0</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -124,32 +109,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis-spring-boot.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-typehandlers-jsr310</artifactId>
-            <version>${mybatis-typehandlers-jsr310.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-security</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.security.oauth</groupId>-->
-        <!--<artifactId>spring-security-oauth2</artifactId>-->
-        <!--<version>${spring-security-oauth2.version}</version>-->
-        <!--</dependency>-->
 
 
         <dependency>
@@ -160,23 +125,7 @@
             <groupId>org.springframework.hateoas</groupId>
             <artifactId>spring-hateoas</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <scope>runtime</scope>
-        </dependency>
 
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.mapstruct</groupId>
-                    <artifactId>mapstruct</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
 
         <!--  jackson  -->
         <dependency>
@@ -211,73 +160,21 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${springfox.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-staticdocs</artifactId>
-            <version>${springfox.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>${liquibase.version}</version>
-        </dependency>
         <!-- test -->
-        <dependency>
-            <groupId>org.springframework.restdocs</groupId>
-            <artifactId>spring-restdocs-mockmvc</artifactId>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.webcohesion.enunciate</groupId>
-            <artifactId>enunciate-core</artifactId>
-            <version>${enunciate.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.webcohesion.enunciate</groupId>
-            <artifactId>enunciate-core-annotations</artifactId>
-            <version>${enunciate.version}</version>
-        </dependency>
+
     </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
-            <plugin>
-                <groupId>com.webcohesion.enunciate</groupId>
-                <artifactId>enunciate-maven-plugin</artifactId>
-                <version>${enunciate.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>assemble</goal>
-                        </goals>
-                        <configuration>
-                            <docsDir>${project.build.directory}/docs</docsDir>
-                            <configFile>enunciate.xml</configFile>
-                        </configuration>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.webcohesion.enunciate</groupId>
-                        <artifactId>enunciate-lombok</artifactId>
-                        <version>${enunciate.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
+            <!-- Package as an executable jar -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -375,142 +272,10 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${jar-plugin.version}</version>
             </plugin>
-
-            <!-- Static API documentation with Swagger2Markup -->
-            <plugin>
-                <groupId>org.asciidoctor</groupId>
-                <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>1.5.2</version>
-                <executions>
-                    <execution>
-                        <id>output-html</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>process-asciidoc</goal>
-                        </goals>
-                        <configuration>
-                            <backend>html5</backend>
-                            <outputDirectory>${basedir}/src/main/resources/static/</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <sourceDirectory>${basedir}/src/test/resources</sourceDirectory>
-                    <sourceDocumentName>index.adoc</sourceDocumentName>
-                    <attributes>
-                        <doctype>book</doctype>
-                        <toc>left</toc>
-                        <toclevels>2</toclevels>
-                        <generated>${project.build.directory}/docs/asciidoc/generated</generated>
-                    </attributes>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.4.13</version>
-                <configuration>
-                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                    <dockerDirectory>src/main/docker</dockerDirectory>
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.${project.packaging}</include>
-                        </resource>
-                    </resources>
-                    <forceTags>true</forceTags>
-                    <imageTags>
-                        <imageTag>${project.version}</imageTag>
-                        <imageTag>latest</imageTag>
-                    </imageTags>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
     <profiles>
-        <profile>
-            <id>mybatis-generator-and-liquibase-maven-plugin</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.mybatis.generator</groupId>
-                        <artifactId>mybatis-generator-maven-plugin</artifactId>
-                        <version>1.3.5</version>
-                        <configuration>
-                            <configurationFile>src/main/resources/mybatis-generator/generatorConfig.xml
-                            </configurationFile>
-                            <verbose>true</verbose>
-                            <overwrite>false</overwrite>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>Generate MyBatis Artifacts</id>
-                                <goals>
-                                    <goal>generate</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.mybatis.generator</groupId>
-                                <artifactId>mybatis-generator-core</artifactId>
-                                <version>1.3.5</version>
-                            </dependency>
-                        </dependencies>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.liquibase</groupId>
-                        <artifactId>liquibase-maven-plugin</artifactId>
-                        <version>${liquibase.version}}</version>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.javassist</groupId>
-                                <artifactId>javassist</artifactId>
-                                <version>3.18.2-GA</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>org.liquibase.ext</groupId>
-                                <artifactId>liquibase-hibernate4</artifactId>
-                                <version>3.6</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>org.springframework.boot</groupId>
-                                <artifactId>spring-boot-starter-data-jpa</artifactId>
-                                <version>${spring-boot.version}</version>
-                            </dependency>
-                        </dependencies>
-                        <configuration>
-                            <changeLogFile>src/main/resources/liquibase/master.xml</changeLogFile>
-                            <diffChangeLogFile>
-                                src/main/resources/liquibase/changelog/${maven.build.timestamp}_changelog.xml
-                            </diffChangeLogFile>
-                            <driver>com.mysql.jdbc.Driver</driver>
-                            <url>jdbc:mysql://localhost:3306/Test</url>
-                            <defaultSchemaName>Test</defaultSchemaName>
-                            <username>root</username>
-                            <password/>
-                            <referenceUrl>jdbc:mysql://localhost:3306/Test1</referenceUrl>
-                            <referenceUsername>root</referenceUsername>
-                            <referencePassword></referencePassword>
-
-                            <verbose>true</verbose>
-                            <logging>debug</logging>
-                            <diffExcludeObjects>
-
-                            </diffExcludeObjects>
-                            <outputChangeLogFile>
-                                src/main/resources/liquibase/changelog/${maven.build.timestamp}-generatedChangeLog.xml
-                            </outputChangeLogFile>
-                            <outputFileEncoding>utf8</outputFileEncoding>
-                        </configuration>
-                    </plugin>
-                </plugins>
-
-            </build>
-        </profile>
     </profiles>
     <repositories>
         <repository>
