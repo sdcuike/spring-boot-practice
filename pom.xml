@@ -14,7 +14,7 @@
     <artifactId>spring-boot-practice</artifactId>
     <version>2018.1.17-SNAPSHOT</version>
     <name>${project.artifactId}</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <description></description>
     <inceptionYear>2018-1-17</inceptionYear>
 
@@ -117,10 +117,6 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-actuator-docs</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.hateoas</groupId>
             <artifactId>spring-hateoas</artifactId>
