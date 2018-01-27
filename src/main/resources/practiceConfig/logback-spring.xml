@@ -4,7 +4,7 @@
     <include resource="practiceConfig/console-appender.xml"/>
     <include resource="practiceConfig/file-appender.xml"/>
 
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </root>
