@@ -76,4 +76,4 @@ enunciate 在配置文件中修改模板（js加载太慢，到源文件里copy�
 # 分支部分说明
 - [https://github.com/sdcuike/spring-boot-practice/tree/blog2018年01月28根据是否存在某特定的系统环境变量来注册bean](https://github.com/sdcuike/spring-boot-practice/tree/blog2018年01月28根据是否存在某特定的系统环境变量来注册bean)
 
--[https://github.com/sdcuike/spring-boot-practice/tree/blog2018年01月28根据在classpath路径中是否存在某个特定的类来注册bean](https://github.com/sdcuike/spring-boot-practice/tree/blog2018年01月28根据在classpath路径中是否存在某个特定的类来注册bean)
+- [https://github.com/sdcuike/spring-boot-practice/tree/blog2018年01月28根据在classpath路径中是否存在某个特定的类来注册bean](https://github.com/sdcuike/spring-boot-practice/tree/blog2018年01月28根据在classpath路径中是否存在某个特定的类来注册bean)
