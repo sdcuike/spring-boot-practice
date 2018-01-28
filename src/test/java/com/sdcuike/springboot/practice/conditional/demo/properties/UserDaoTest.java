@@ -2,7 +2,6 @@ package com.sdcuike.springboot.practice.conditional.demo.properties;
 
 import com.sdcuike.springboot.practice.SpringApplicationBoot;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
