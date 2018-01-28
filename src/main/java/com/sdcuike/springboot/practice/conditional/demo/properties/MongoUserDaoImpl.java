@@ -12,7 +12,7 @@ import java.util.List;
  * @since 2018/1/28
  */
 @Repository
-@Conditional(MongoDbTypeCondition.class)
+@Conditional(MySqlDriverNotPresentsCondition.class)
 public class MongoUserDaoImpl implements UserDao {
     @Override
     public List<String> getAllUserNames() {

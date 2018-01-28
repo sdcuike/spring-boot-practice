@@ -26,21 +26,9 @@ public class UserDaoTest {
     private UserDao userDao;
     
     
-    @BeforeClass
-    public static void init() {
-        System.setProperty("dbType", "mongo");
-//        System.setProperty("dbType", "mysql");
-        
-    }
-    
-    @AfterClass
-    public static void close() {
-        System.clearProperty("dbType");
-    }
-    
     @Test
     public void testMysqlDbType() {
         final List<String> allUserNames = userDao.getAllUserNames();
-         assertEquals(Arrays.asList(" Mongo db ", "test"), allUserNames);
+         assertEquals(Arrays.asList("jdbc", "test"), allUserNames);
     }
 }

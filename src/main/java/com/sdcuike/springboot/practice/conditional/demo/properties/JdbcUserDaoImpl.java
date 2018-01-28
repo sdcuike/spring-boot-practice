@@ -12,7 +12,7 @@ import java.util.List;
  * @since 2018/1/28
  */
 @Repository
-@Conditional(MySqlDbTypeCondition.class)
+@Conditional(MySqlDriverPresentsCondition.class)
 public class JdbcUserDaoImpl implements UserDao {
     @Override
     public List<String> getAllUserNames() {
