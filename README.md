@@ -72,3 +72,6 @@ enunciate 在配置文件中修改模板（js加载太慢，到源文件里copy�
 - 数据库版本管理 [liquibase 使用](https://github.com/sdcuike/liquibase-demo)，[官网](http://www.liquibase.org)
 
 - MyBatis 代码生成[使用](https://github.com/sdcuike/mybatis-generator-core-1.3.5-demo),[官网](http://www.mybatis.org/generator/)
+
+# 分支部分说明
+- [https://github.com/sdcuike/spring-boot-practice/tree/blog2018年01月28根据是否存在某特定的系统环境变量来注册bean](https://github.com/sdcuike/spring-boot-practice/tree/blog2018年01月28根据是否存在某特定的系统环境变量来注册bean)
