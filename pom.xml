@@ -19,7 +19,7 @@
     <inceptionYear>2018-1-17</inceptionYear>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>1.9</java.version>
         <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
         <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
         <failOnMissingWebXml>false</failOnMissingWebXml>
